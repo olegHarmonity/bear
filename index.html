@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Import the component -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+    <!-- Use it like any other HTML element -->
+
+    <title>Document</title>
+  </head>
+  <body>
+    <model-viewer
+      id="modelViewer"
+      src="./bear_test_05.glb"
+      ios-src="./001bear.usdz"
+      alt="A 3D model of a logo"
+      autoplay
+      ar
+      auto-rotate
+      camera-controls
+    />
+    <div>model viewer</div>
+  </body>
+  <script>
+    const modelViewer = document.querySelector("model-viewer");
+    console.log(modelViewer.activateAR);
+    modelViewer.addEventListener("load", () => {
+      modelViewer.play();
+      modelViewer.activateAR();
+    });
+  </script>
+</html>
