@@ -40,8 +40,10 @@
     document.addEventListener("DOMContentLoaded", () => {
       modelViewer.addEventListener("load", () => {
         displayLoadingBar();
-        modelViewer.play();
-        modelViewer.activateAR();
+        setTimeout(() => {
+          modelViewer.play();
+          modelViewer.activateAR();
+        }, 3000);
       });
     });
   </script>
