@@ -19,29 +19,30 @@
         <div class="spinner">Loading</div>
         <div class="loadingbar"></div>
       </div>
+      <model-viewer
+        id="modelViewer"
+        src="./bear_test_05.glb"
+        ios-src="./bear_008_final.usdz"
+        alt="A 3D model of a logo"
+        autoplay
+        ar
+        ar-modes="webxr scene-viewer quick-look"
+        auto-rotate
+        camera-controls
+      />
     </div>
-    <model-viewer
-      id="modelViewer"
-      src="./bear_test_05.glb"
-      ios-src="./bear_008_final.usdz"
-      alt="A 3D model of a logo"
-      autoplay
-      ar
-      ar-modes="webxr scene-viewer quick-look"
-      auto-rotate
-      camera-controls
-    />
   </body>
   <script>
     function displayLoadingBar() {
       const loadingbar = document.querySelector(".loadingbar").classList.add("start");
     }
     const modelViewer = document.querySelector("model-viewer");
-
-    modelViewer.addEventListener("load", () => {
-      displayLoadingBar();
-      modelViewer.play();
-      modelViewer.activateAR();
+    document.addEventListener("DOMContentLoaded", () => {
+      modelViewer.addEventListener("load", () => {
+        displayLoadingBar();
+        modelViewer.play();
+        modelViewer.activateAR();
+      });
     });
   </script>
 </html>
