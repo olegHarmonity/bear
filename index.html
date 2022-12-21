@@ -43,15 +43,15 @@
         displayLoadingBar();
 
         setTimeout(() => {
-          modelViewer.activateAR();
+          // modelViewer.activateAR();
           modelViewer.play({ repetitions: 1 });
-        }, 1000);
-        modelViewer.addEventListener("finished", () => {
-          setTimeout(() => {
-            console.log("finished playing");
-            window.location.replace("over.html");
-          }, 1000);
-        });
+          modelViewer.addEventListener("finished", () => {
+            setTimeout(() => {
+              console.log("finished playing");
+              window.location.replace("over.html");
+            }, 3000);
+          });
+        }, 3000);
       });
     });
   </script>
