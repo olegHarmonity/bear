@@ -8,10 +8,14 @@
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
     <!-- Use it like any other HTML element -->
-
+    <link rel="stylesheet" href="index.css" />
     <title>Document</title>
   </head>
   <body>
+    <div class="frontpage">
+      <img src="Logo.png" />
+      <h1 class="title">AR</h1>
+    </div>
     <model-viewer
       id="modelViewer"
       src="./bear_test_05.glb"
@@ -22,7 +26,6 @@
       auto-rotate
       camera-controls
     />
-    <div>model viewer</div>
   </body>
   <script>
     const modelViewer = document.querySelector("model-viewer");
