@@ -3,6 +3,9 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  width: 100vw;
+  height: 100vh;
 }
 
 #modelViewer {
@@ -12,16 +15,24 @@ html {
 .frontpage {
   width: 100vw;
   height: 100vh;
-  background-color: black;
+
   background: url("./Background.jpg");
   background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 
-.frontpage img {
+.content img {
   display: block;
   width: 60%;
   max-width: 500px;
