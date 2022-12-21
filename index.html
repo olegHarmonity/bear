@@ -37,13 +37,10 @@
     }
     const modelViewer = document.querySelector("model-viewer");
     let a = [];
-    modelViewer.addEventListener("progress", (e) => {
-      a.push(e.detail.totalProgress);
-      console.log(e.detail.totalProgress);
-    });
+
     modelViewer.addEventListener("load", () => {
       displayLoadingBar();
-      modelViewer.play();
+      // modelViewer.play();
       modelViewer.activateAR();
     });
   </script>
