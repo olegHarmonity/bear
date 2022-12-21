@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Harmonity</title>
+    <link rel="icon" type="image/x-icon" href="/Logo64x64.png" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,7 +11,6 @@
     <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
     <!-- Use it like any other HTML element -->
     <link rel="stylesheet" href="index.css" />
-    <title>Document</title>
   </head>
   <body>
     <div class="frontpage">
@@ -35,21 +36,22 @@
     function displayLoadingBar() {
       const loadingbar = document.querySelector(".loadingbar").classList.add("start");
     }
-    const modelViewer = document.querySelector("model-viewer");
 
     document.addEventListener("DOMContentLoaded", () => {
+      const modelViewer = document.querySelector("model-viewer");
       modelViewer.addEventListener("load", () => {
         displayLoadingBar();
+
+        setTimeout(() => {
+          modelViewer.activateAR();
+          modelViewer.play({ repetitions: 1 });
+        }, 1000);
         modelViewer.addEventListener("finished", () => {
           setTimeout(() => {
+            console.log("finished playing");
             window.location.replace("over.html");
           }, 1000);
         });
-
-        setTimeout(() => {
-          modelViewer.play({ repetitions: 1 });
-          modelViewer.activateAR();
-        }, 1000);
       });
     });
   </script>
