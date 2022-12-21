@@ -9,7 +9,7 @@ html {
 }
 
 #modelViewer {
-  height: 0;
+  height: 100px;
 }
 
 .frontpage {

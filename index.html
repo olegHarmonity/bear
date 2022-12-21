@@ -36,11 +36,10 @@
       const loadingbar = document.querySelector(".loadingbar").classList.add("start");
     }
     const modelViewer = document.querySelector("model-viewer");
-    let a = [];
 
     modelViewer.addEventListener("load", () => {
       displayLoadingBar();
-      // modelViewer.play();
+      modelViewer.play();
       modelViewer.activateAR();
     });
   </script>
