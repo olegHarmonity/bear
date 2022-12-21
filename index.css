@@ -103,6 +103,32 @@ html {
     width: 100%;
   }
 }
+
+.over {
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.back {
+  display: block;
+  width: 200px;
+  height: 30px;
+  background-color: white;
+  color: black;
+  padding: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 5px;
+  text-align: center;
+}
+
 .square {
   width: 100px;
   height: 100px;
