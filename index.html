@@ -16,6 +16,8 @@
       <div class="content">
         <img src="Logo.png" />
         <h1 class="title">AR</h1>
+        <div class="spinner">Loading</div>
+        <div class="loadingbar"></div>
       </div>
     </div>
     <model-viewer
@@ -30,9 +32,17 @@
     />
   </body>
   <script>
+    function displayLoadingBar() {
+      const loadingbar = document.querySelector(".loadingbar").classList.add("start");
+    }
     const modelViewer = document.querySelector("model-viewer");
-    console.log(modelViewer.activateAR);
+    let a = [];
+    modelViewer.addEventListener("progress", (e) => {
+      a.push(e.detail.totalProgress);
+      console.log(e.detail.totalProgress);
+    });
     modelViewer.addEventListener("load", () => {
+      displayLoadingBar();
       modelViewer.play();
       modelViewer.activateAR();
     });
