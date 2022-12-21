@@ -21,10 +21,9 @@
       </div>
       <model-viewer
         id="modelViewer"
-        src="./bear_test_05.glb"
-        ios-src="./bear_008_final.usdz"
+        src="./bear_test_05.glb?sound=./cowboy.mp3"
+        ios-src="./bear_008_final.usdz?sound=./cowboy.mp3"
         alt="A 3D model of a logo"
-        autoplay
         ar
         ar-modes="webxr scene-viewer quick-look"
         auto-rotate
@@ -37,6 +36,7 @@
       const loadingbar = document.querySelector(".loadingbar").classList.add("start");
     }
     const modelViewer = document.querySelector("model-viewer");
+
     document.addEventListener("DOMContentLoaded", () => {
       modelViewer.addEventListener("load", () => {
         displayLoadingBar();
