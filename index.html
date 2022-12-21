@@ -19,17 +19,17 @@
         <div class="spinner">Loading</div>
         <div class="loadingbar"></div>
       </div>
+      <model-viewer
+        id="modelViewer"
+        src="./bear_test_05.glb"
+        ios-src="./bear_002_final_standard.usdz"
+        alt="A 3D model of a logo"
+        ar
+        ar-modes="webxr scene-viewer quick-look"
+        auto-rotate
+        camera-controls
+      />
     </div>
-    <model-viewer
-      id="modelViewer"
-      src="./bear_test_05.glb"
-      ios-src="./bear_002_final_standard.usdz"
-      alt="A 3D model of a logo"
-      ar
-      ar-modes="webxr scene-viewer quick-look"
-      auto-rotate
-      camera-controls
-    />
   </body>
   <script>
     function displayLoadingBar() {
