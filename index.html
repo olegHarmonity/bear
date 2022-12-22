@@ -20,6 +20,7 @@
         <div class="spinner">Loading</div>
         <div class="loadingbar"></div>
       </div>
+      <button id="button">start ar</button>
       <model-viewer
         id="modelViewer"
         src="./bear_test_05.glb"
@@ -34,31 +35,51 @@
     </div>
   </body>
   <script>
+    function startAr() {
+      const btn = document.getElementById("button");
+      btn.addEventListener("click", () => {
+        console.log("clicked");
+      });
+    }
     function displayLoadingBar() {
       const loadingbar = document.querySelector(".loadingbar").classList.add("start");
     }
-
     document.addEventListener("DOMContentLoaded", () => {
       const modelViewer = document.getElementById("modelViewer");
-      modelViewer.addEventListener("load", () => {
-        displayLoadingBar();
 
-        modelViewer.addEventListener("finished", (e) => {
-          console.log("finished playing");
+      modelViewer.addEventListener("load", (e) => {
+        const btn = document.getElementById("button");
+        button.addEventListener("click", () => {
+          modelViewer.activateAR();
         });
-        modelViewer.addEventListener("play", (e) => {
-          console.log("started playing");
-        });
-
-        modelViewer.addEventListener("ar-status", (e) => {
-          if (e.detail.status === "object-placed") {
-            console.log("presenting");
+        modelViewer.addEventListener("model-visibility", (e) => {
+          if (e.detail.visible) {
             modelViewer.play({ repetitions: 1 });
           }
         });
-
-        modelViewer.activateAR();
       });
     });
+    // document.addEventListener("DOMContentLoaded", () => {
+    //   const modelViewer = document.getElementById("modelViewer");
+    //   modelViewer.addEventListener("load", () => {
+    //     displayLoadingBar();
+
+    //     modelViewer.addEventListener("finished", (e) => {
+    //       console.log("finished playing");
+    //     });
+    //     modelViewer.addEventListener("play", (e) => {
+    //       console.log("started playing");
+    //     });
+
+    //     modelViewer.addEventListener("ar-status", (e) => {
+    //       if (e.detail.status === "object-placed") {
+    //         console.log("presenting");
+    //         modelViewer.play({ repetitions: 1 });
+    //       }
+    //     });
+
+    //     modelViewer.activateAR();
+    //   });
+    // });
   </script>
 </html>

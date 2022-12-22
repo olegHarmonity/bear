@@ -24,13 +24,23 @@
     <script type="module">
       const modelViewer = document.querySelector("#change-speed-demo");
 
-      const play = () => {
+      modelViewer.addEventListener("load", () => {
         modelViewer.activateAR();
-        
-          modelViewer.play({ repetitions: 1 });
-        
-      };
-      modelViewer.addEventListener("load", play);
+        modelViewer.play({ repetitions: 1 });
+      });
+
+      // const play = () => {
+      //   modelViewer.addEventListener("model-visibility", () => {
+      //     console.log("visible");
+      //   });
+      //   modelViewer.activateAR();
+      //   modelViewer.addEventListener("ar-status", (e) => {
+      //     console.log(e.detail);
+      //   });
+      //   modelViewer.play({ repetitions: 1 });
+      // };
+      // modelViewer.addEventListener("load", play);
+
       //  modelViewer.addEventListener("finished", play);
     </script>
   </body>
