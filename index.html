@@ -22,7 +22,7 @@
       </div>
       <model-viewer
         id="modelViewer"
-        src="./bear_test_05.glb?sound=cowboy.mp3"
+        src="./bear_test_05.glb"
         ios-src="./bear_002_final_standard.usdz?sound=cowboy.mp3"
         alt="A 3D model of a logo"
         ar
@@ -43,14 +43,14 @@
         displayLoadingBar();
 
         setTimeout(() => {
-          modelViewer.activateAR();
-          modelViewer.play({ repetitions: 1 });
-          modelViewer.addEventListener("finished", () => {
-            setTimeout(() => {
-              console.log("finished playing");
-              window.location.replace("over.html");
-            }, 3000);
+          modelViewer.addEventListener("finished", (e) => {
+            console.log("finished playing");
           });
+          modelViewer.addEventListener("play", (e) => {
+            console.log("started playing");
+          });
+          modelViewer.play({ repetitions: 1 });
+          modelViewer.activateAR();
         }, 3000);
       });
     });
