@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Import the component -->
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script type="module" src="https://unpkg.com/@google/model-viewer@2.1.1/dist/model-viewer.min.js"></script>
     <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
     <!-- Use it like any other HTML element -->
     <link rel="stylesheet" href="index.css" />
@@ -29,6 +29,7 @@
         ar-modes="webxr scene-viewer quick-look"
         auto-rotate
         camera-controls
+        animation-name="Dance"
       />
     </div>
   </body>
@@ -38,7 +39,7 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      const modelViewer = document.querySelector("model-viewer");
+      const modelViewer = document.getElementById("modelViewer");
       modelViewer.addEventListener("load", () => {
         displayLoadingBar();
 
