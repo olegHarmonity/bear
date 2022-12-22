@@ -52,11 +52,11 @@
         button.addEventListener("click", () => {
           modelViewer.activateAR();
         });
-        modelViewer.addEventListener("model-visibility", (e) => {
-          if (e.detail.visible) {
+        modelViewer.addEventListener("ar-status", (e) => {
+          if (e.detail.status === "object-placed") {
             setTimeout(() => {
               modelViewer.play({ repetitions: 1 });
-            }, 2000);
+            }, 4000);
           }
         });
       });
