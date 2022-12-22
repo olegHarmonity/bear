@@ -26,9 +26,9 @@
 
       const play = () => {
         modelViewer.activateAR();
-        setTimeout(() => {
+        
           modelViewer.play({ repetitions: 1 });
-        }, 3000);
+        
       };
       modelViewer.addEventListener("load", play);
       //  modelViewer.addEventListener("finished", play);
