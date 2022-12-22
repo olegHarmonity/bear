@@ -42,16 +42,21 @@
       modelViewer.addEventListener("load", () => {
         displayLoadingBar();
 
-        setTimeout(() => {
-          modelViewer.addEventListener("finished", (e) => {
-            console.log("finished playing");
-          });
-          modelViewer.addEventListener("play", (e) => {
-            console.log("started playing");
-          });
-          modelViewer.play({ repetitions: 1 });
-          modelViewer.activateAR();
-        }, 3000);
+        modelViewer.addEventListener("finished", (e) => {
+          console.log("finished playing");
+        });
+        modelViewer.addEventListener("play", (e) => {
+          console.log("started playing");
+        });
+
+        modelViewer.addEventListener("ar-status", (e) => {
+          if (e.detail.status === "object-placed") {
+            console.log("presenting");
+            modelViewer.play({ repetitions: 1 });
+          }
+        });
+
+        modelViewer.activateAR();
       });
     });
   </script>
