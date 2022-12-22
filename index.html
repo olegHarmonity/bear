@@ -54,7 +54,9 @@
         });
         modelViewer.addEventListener("model-visibility", (e) => {
           if (e.detail.visible) {
-            modelViewer.play({ repetitions: 1 });
+            setTimeout(() => {
+              modelViewer.play({ repetitions: 1 });
+            }, 2000);
           }
         });
       });
