@@ -12,8 +12,22 @@ html {
   height: 0;
 }
 
-#change-speed-demo {
-  height: 0;
+.visible {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+#button {
+  display: none;
+  width: 100px;
+  padding: 10px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background-color: white;
+  font-size: 20px;
 }
 
 .frontpage {
@@ -53,16 +67,6 @@ html {
 
 .spinner {
   color: white;
-}
-
-.loadingbar {
-  position: absolute;
-  height: 20px;
-  left: 0;
-
-  bottom: 100px;
-
-  background-color: white;
 }
 
 .start {

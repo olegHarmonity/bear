@@ -18,9 +18,9 @@
         <img src="Logo.png" />
         <h1 class="title">AR</h1>
         <div class="spinner">Loading</div>
-        <div class="loadingbar"></div>
+
+        <button id="button">start ar</button>
       </div>
-      <button id="button">start ar</button>
       <model-viewer
         id="modelViewer"
         src="./bear_test_05.glb"
@@ -48,7 +48,13 @@
       const modelViewer = document.getElementById("modelViewer");
 
       modelViewer.addEventListener("load", (e) => {
+        setTimeout(() => {
+          window.location.replace("over.html");
+        }, 25000);
+        const spinner = document.querySelector(".spinner");
+        spinner.classList.add("hidden");
         const btn = document.getElementById("button");
+        btn.style.display = "block";
         button.addEventListener("click", () => {
           modelViewer.activateAR();
         });
