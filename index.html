@@ -42,6 +42,9 @@
       const modelViewer = document.getElementById("modelViewer");
 
       modelViewer.addEventListener("load", (e) => {
+        setTimeout(() => {
+          window.location.replace("over.html");
+        }, 26000);
         modelViewer.activateAR();
         setTimeout(() => {
           modelViewer.play({ repetitions: 1 });
