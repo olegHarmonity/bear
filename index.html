@@ -43,13 +43,8 @@
 
       modelViewer.addEventListener("load", (e) => {
         modelViewer.activateAR();
-        modelViewer.addEventListener("ar-status", (e) => {
-          if (e.detail.status === "object-placed") {
-            setTimeout(() => {
-              modelViewer.play({ repetitions: 1 });
-            }, 2000);
-          }
-        });
+        modelViewer.play({ repetitions: 1 });
+
         // modelViewer.activateAR();
         // modelViewer.play({ repetitions: 1 });
         // const spinner = document.querySelector(".spinner");
@@ -63,13 +58,13 @@
         //     window.location.replace("over.html");
         //   }, 20000);
         // });
-        modelViewer.addEventListener("ar-status", (e) => {
-          if (e.detail.status === "object-placed") {
-            setTimeout(() => {
-              modelViewer.play({ repetitions: 1 });
-            }, 4000);
-          }
-        });
+        // modelViewer.addEventListener("ar-status", (e) => {
+        //   if (e.detail.status === "object-placed") {
+        //     setTimeout(() => {
+        //       modelViewer.play({ repetitions: 1 });
+        //     }, 4000);
+        //   }
+        // });
       });
     });
     // document.addEventListener("DOMContentLoaded", () => {
