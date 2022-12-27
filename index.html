@@ -42,17 +42,19 @@
       const modelViewer = document.getElementById("modelViewer");
 
       modelViewer.addEventListener("load", (e) => {
-        const spinner = document.querySelector(".spinner");
-        spinner.classList.add("hidden");
-        const btn = document.getElementById("button");
-        btn.style.display = "block";
-        button.addEventListener("click", () => {
-          modelViewer.activateAR();
-          modelViewer.play({ repetitions: 1 });
-          setTimeout(() => {
-            window.location.replace("over.html");
-          }, 20000);
-        });
+        modelViewer.activateAR();
+        modelViewer.play({ repetitions: 1 });
+        // const spinner = document.querySelector(".spinner");
+        // spinner.classList.add("hidden");
+        // const btn = document.getElementById("button");
+        // btn.style.display = "block";
+        // button.addEventListener("click", () => {
+        //   modelViewer.activateAR();
+        //   modelViewer.play({ repetitions: 1 });
+        //   setTimeout(() => {
+        //     window.location.replace("over.html");
+        //   }, 20000);
+        // });
         // modelViewer.addEventListener("ar-status", (e) => {
         //   if (e.detail.status === "object-placed") {
         //     setTimeout(() => {
