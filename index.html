@@ -24,7 +24,7 @@
       <model-viewer
         id="modelViewer"
         src="./bear_test_05.glb?sound=./cowboy.mp3"
-        ios-src="./NewProject2.usdz"
+        ios-src="./NewProject3.usdz"
         alt="A 3D model of a logo"
         ar
         ar-modes="webxr scene-viewer quick-look"
@@ -48,10 +48,16 @@
         btn.style.display = "block";
         button.addEventListener("click", () => {
           modelViewer.activateAR();
-          modelViewer.play({ repetitions: 1 });
+
           // setTimeout(() => {
           //   window.location.replace("over.html");
           // }, 20000);
+        });
+
+        modelViewer.addEventListener("ar-status", (e) => {
+          if (e.detail.status === "session-started") {
+            modelViewer.play({ repetitions: 1 });
+          }
         });
 
         // modelViewer.activateAR();
