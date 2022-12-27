@@ -42,6 +42,7 @@
       const modelViewer = document.getElementById("modelViewer");
 
       modelViewer.addEventListener("load", (e) => {
+        modelViewer.activateAR();
         modelViewer.addEventListener("ar-status", (e) => {
           if (e.detail.status === "object-placed") {
             setTimeout(() => {
