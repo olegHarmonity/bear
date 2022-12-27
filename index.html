@@ -42,23 +42,27 @@
       const modelViewer = document.getElementById("modelViewer");
 
       modelViewer.addEventListener("load", (e) => {
-        // modelViewer.activateAR();
+        modelViewer.activateAR();
+        setTimeout(() => {
+          modelViewer.play({ repetitions: 1 });
+        }, 3000);
+        modelViewer.play({ repetitions: 1 });
         // modelViewer.play({ repetitions: 1 });
-        const btn = document.getElementById("button");
-        btn.style.display = "block";
-        button.addEventListener("click", () => {
-          modelViewer.activateAR();
+        // const btn = document.getElementById("button");
+        // btn.style.display = "block";
+        // button.addEventListener("click", () => {
+        //   modelViewer.activateAR();
 
-          // setTimeout(() => {
-          //   window.location.replace("over.html");
-          // }, 20000);
-        });
+        //   // setTimeout(() => {
+        //   //   window.location.replace("over.html");
+        //   // }, 20000);
+        // });
 
-        modelViewer.addEventListener("ar-status", (e) => {
-          if (e.detail.status === "session-started") {
-            modelViewer.play({ repetitions: 1 });
-          }
-        });
+        // modelViewer.addEventListener("ar-status", (e) => {
+        //   if (e.detail.status === "session-started") {
+        //     modelViewer.play({ repetitions: 1 });
+        //   }
+        // });
 
         // modelViewer.activateAR();
         // modelViewer.play({ repetitions: 1 });
