@@ -21,6 +21,11 @@
 
         <button id="button">start ar</button>
       </div>
+      <audio controls>
+        <source src="cowboy.mp3" />
+
+        Your browser does not support the audio tag.
+      </audio>
       <model-viewer
         id="modelViewer"
         src="./bear_test_05.glb?sound=./cowboy.mp3"
@@ -41,6 +46,7 @@
     }
     document.addEventListener("DOMContentLoaded", () => {
       const modelViewer = document.getElementById("modelViewer");
+      let audio = new Audio("Cowboy.mp3");
       // setTimeout(() => {
       //   window.location.replace("over.html");
       // }, 26000);
@@ -49,7 +55,11 @@
         btn.style.display = "block";
         button.addEventListener("click", () => {
           modelViewer.activateAR();
-          modelViewer.play({ repetitions: 1 });
+          setTimeout(() => {
+            modelViewer.play({ repetitions: 1 });
+            audio.play();
+          }, 5000);
+
           console.log(e.detail);
         });
 
