@@ -59,16 +59,17 @@
             console.log("animat play");
             audio.play();
           });
-          modelViewer.addEventListener("ar-status", (e) => {
-            if (e.detail.status === "object-placed") {
-              modelViewer.play({ repetitions: 1 });
-
-              modelViewer.addEventListener("finished", () => {
-                audio.pause();
-                window.location.replace("over.html");
-              });
-            }
+          modelViewer.addEventListener("finished", () => {
+            audio.pause();
+            window.location.replace("over.html");
           });
+          modelViewer.play({ repetitions: 1 });
+          // modelViewer.addEventListener("ar-status", (e) => {
+          //   if (e.detail.status === "object-placed") {
+          //     modelViewer.play({ repetitions: 1 });
+
+          //   }
+          // });
         });
 
         // const btn = document.getElementById("button");
