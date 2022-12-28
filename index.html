@@ -55,13 +55,12 @@
           modelViewer.activateAR();
           modelViewer.addEventListener("ar-status", (e) => {
             if (e.detail.status === "object-placed") {
-              
-                modelViewer.play({ repetitions: 1 });
-                audio.play();
-                modelViewer.addEventListener("finished", () => {
-                  audio.pause();
-                });
-              
+              modelViewer.play({ repetitions: 1 });
+              audio.play();
+              modelViewer.addEventListener("finished", () => {
+                audio.pause();
+                window.location.replace("over.html");
+              });
             }
           });
         });
