@@ -45,15 +45,13 @@
       //   window.location.replace("over.html");
       // }, 26000);
       modelViewer.addEventListener("load", (e) => {
-        modelViewer.activateAR();
-        modelViewer.play({ repetitions: 1 });
-        // const btn = document.getElementById("button");
-        // btn.style.display = "block";
-        // button.addEventListener("click", () => {
-        //   modelViewer.activateAR();
-
-        //   console.log(e.detail);
-        // });
+        const btn = document.getElementById("button");
+        btn.style.display = "block";
+        button.addEventListener("click", () => {
+          modelViewer.activateAR();
+          modelViewer.play({ repetitions: 1 });
+          console.log(e.detail);
+        });
 
         // const btn = document.getElementById("button");
         // btn.style.display = "block";
