@@ -27,11 +27,12 @@
         ios-src="./NewProject4.usdz"
         alt="A 3D model of a logo"
         ar
-        ar-modes="webxr scene-viewer quick-look"
+        ar-modes="webxr  quick-look"
         auto-rotate
         camera-controls
         animation-name="Dance"
-      />
+      >
+      </model-viewer>
     </div>
   </body>
   <script>
@@ -40,16 +41,20 @@
     }
     document.addEventListener("DOMContentLoaded", () => {
       const modelViewer = document.getElementById("modelViewer");
-      setTimeout(() => {
-        window.location.replace("over.html");
-      }, 26000);
+      // setTimeout(() => {
+      //   window.location.replace("over.html");
+      // }, 26000);
       modelViewer.addEventListener("load", (e) => {
         modelViewer.activateAR();
-        setTimeout(() => {
-          modelViewer.play({ repetitions: 1 });
-        }, 3000);
         modelViewer.play({ repetitions: 1 });
-        // modelViewer.play({ repetitions: 1 });
+        // const btn = document.getElementById("button");
+        // btn.style.display = "block";
+        // button.addEventListener("click", () => {
+        //   modelViewer.activateAR();
+
+        //   console.log(e.detail);
+        // });
+
         // const btn = document.getElementById("button");
         // btn.style.display = "block";
         // button.addEventListener("click", () => {
