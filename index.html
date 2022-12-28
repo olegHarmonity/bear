@@ -63,7 +63,11 @@
             audio.pause();
             window.location.replace("over.html");
           });
-          modelViewer.play({ repetitions: 1 });
+
+          setTimeout(() => {
+            modelViewer.play({ repetitions: 1 });
+          }, 5000);
+
           // modelViewer.addEventListener("ar-status", (e) => {
           //   if (e.detail.status === "object-placed") {
           //     modelViewer.play({ repetitions: 1 });
