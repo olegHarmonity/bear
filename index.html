@@ -28,7 +28,7 @@
         ios-src="./NewProject4.usdz"
         alt="A 3D model of a logo"
         ar
-        ar-modes="webxr  quick-look"
+        ar-modes="webxr scene-viewer  quick-look"
         auto-rotate
         camera-controls
         animation-name="Dance"
@@ -42,24 +42,28 @@
     }
     document.addEventListener("DOMContentLoaded", () => {
       const modelViewer = document.getElementById("modelViewer");
-      let audio = new Audio("Cowboy.mp3");
+      let audio = new Audio("JingleBearsAudio.wav");
       // setTimeout(() => {
       //   window.location.replace("over.html");
       // }, 26000);
       modelViewer.addEventListener("load", (e) => {
+        const spinner = document.querySelector(".spinner");
+        spinner.classList.add("hidden");
         const btn = document.getElementById("button");
         btn.style.display = "block";
         button.addEventListener("click", () => {
           modelViewer.activateAR();
-          setTimeout(() => {
-            modelViewer.play({ repetitions: 1 });
-            audio.play();
-            modelViewer.addEventListener("finished", () => {
-              audio.pause();
-            });
-          }, 5000);
-
-          console.log(e.detail);
+          modelViewer.addEventListener("ar-status", (e) => {
+            if (e.detail.status === "object-placed") {
+              setTimeout(() => {
+                modelViewer.play({ repetitions: 1 });
+                audio.play();
+                modelViewer.addEventListener("finished", () => {
+                  audio.pause();
+                });
+              }, 3000);
+            }
+          });
         });
 
         // const btn = document.getElementById("button");
