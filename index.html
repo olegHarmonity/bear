@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Import the component -->
     <script type="module" src="https://unpkg.com/@google/model-viewer@2.1.1/dist/model-viewer.min.js"></script>
-    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+
     <!-- Use it like any other HTML element -->
     <link rel="stylesheet" href="index.css" />
   </head>
@@ -25,7 +25,7 @@
 
       <model-viewer
         id="modelViewer"
-        src="./bear_test_05.glb?sound=./cowboy.mp3"
+        src="./bear_test_05.glb"
         ios-src="./NewProject4.usdz"
         alt="A 3D model of a logo"
         ar
@@ -42,6 +42,16 @@
   <script>
     function displayLoadingBar() {
       const loadingbar = document.querySelector(".loadingbar").classList.add("start");
+    }
+    async function browserHasImmersiveArCompatibility() {
+      if (window.navigator.xr) {
+        const isSupported = await navigator.xr.isSessionSupported("immersive-ar");
+        console.info(
+          `[DEBUG] ${isSupported ? "Browser supports immersive-ar" : "Browser does not support immersive-ar"}`
+        );
+        return isSupported ? true : false;
+      }
+      return false;
     }
     function androidOrIOS() {
       const userAgent = navigator.userAgent;
@@ -60,17 +70,17 @@
       const modelViewer = document.getElementById("modelViewer");
       let audio = new Audio("JingleBearsAudio.wav");
 
-      modelViewer.addEventListener("load", (e) => {
-        const isAr = modelViewer.canActivateAR;
+      modelViewer.addEventListener("load", async (e) => {
+        let isAR = await browserHasImmersiveArCompatibility();
+        console.log(isAR);
         const spinner = document.querySelector(".spinner");
         spinner.classList.add("hidden");
         const btn = document.getElementById("button");
-        if (isAr) {
+        if (isAR) {
           btn.style.display = "block";
           button.addEventListener("click", () => {
             modelViewer.activateAR();
             modelViewer.addEventListener("play", () => {
-              console.log("animat play");
               audio.play();
             });
             modelViewer.addEventListener("finished", () => {
