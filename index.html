@@ -20,6 +20,7 @@
         <div class="spinner">Loading...</div>
 
         <button id="button">start ar</button>
+        <h4 class="ar-failure">YOUR DEVICE DOESN'T SUPPORT AR. YOU WILL BE REDIRECTED TO 3D MODEL MODE</h4>
       </div>
 
       <model-viewer
@@ -95,7 +96,11 @@
             // });
           });
         } else {
-          window.location.replace("fallback.html");
+          const warn = document.querySelector(".ar-failure");
+          warn.classList.add("visible");
+          setTimeout(() => {
+            window.location.replace("fallback.html");
+          }, 3000);
         }
 
         // const btn = document.getElementById("button");

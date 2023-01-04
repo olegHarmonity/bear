@@ -22,4 +22,10 @@
     >
     </model-viewer>
   </body>
+  <script>
+    const modelViewer = document.getElementById("fallback-modelviewer");
+    modelViewer.addEventListener("load", () => {
+      modelViewer.play();
+    });
+  </script>
 </html>
