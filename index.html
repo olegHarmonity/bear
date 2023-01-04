@@ -42,39 +42,61 @@
     function displayLoadingBar() {
       const loadingbar = document.querySelector(".loadingbar").classList.add("start");
     }
+    function androidOrIOS() {
+      const userAgent = navigator.userAgent;
+      if (/android/i.test(userAgent)) {
+        return "android";
+      }
+      if (/iPad|iPhone|iPod/i.test(userAgent)) {
+        return "ios";
+      } else {
+        return "desktop";
+      }
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
+      const os = androidOrIOS();
       const modelViewer = document.getElementById("modelViewer");
       let audio = new Audio("JingleBearsAudio.wav");
-      // setTimeout(() => {
-      //   window.location.replace("over.html");
-      // }, 26000);
+
       modelViewer.addEventListener("load", (e) => {
+        const isAr = modelViewer.canActivateAR;
         const spinner = document.querySelector(".spinner");
         spinner.classList.add("hidden");
         const btn = document.getElementById("button");
-        btn.style.display = "block";
-        button.addEventListener("click", () => {
-          modelViewer.activateAR();
-          modelViewer.addEventListener("play", () => {
-            console.log("animat play");
-            audio.play();
+        if (isAr) {
+          btn.style.display = "block";
+          button.addEventListener("click", () => {
+            modelViewer.activateAR();
+            modelViewer.addEventListener("play", () => {
+              console.log("animat play");
+              audio.play();
+            });
+            modelViewer.addEventListener("finished", () => {
+              audio.pause();
+              window.location.replace("over.html");
+            });
+
+            setTimeout(() => {
+              modelViewer.play({ repetitions: 1 });
+            }, 3000);
+
+            if (os === "ios") {
+              setTimeout(() => {
+                window.location.replace("over.html");
+              }, 3000);
+            }
+
+            // modelViewer.addEventListener("ar-status", (e) => {
+            //   if (e.detail.status === "object-placed") {
+            //     modelViewer.play({ repetitions: 1 });
+
+            //   }
+            // });
           });
-          modelViewer.addEventListener("finished", () => {
-            audio.pause();
-            window.location.replace("over.html");
-          });
-
-          setTimeout(() => {
-            modelViewer.play({ repetitions: 1 });
-          }, 5000);
-
-          // modelViewer.addEventListener("ar-status", (e) => {
-          //   if (e.detail.status === "object-placed") {
-          //     modelViewer.play({ repetitions: 1 });
-
-          //   }
-          // });
-        });
+        } else {
+          window.location.replace("fallback.html");
+        }
 
         // const btn = document.getElementById("button");
         // btn.style.display = "block";
