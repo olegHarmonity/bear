@@ -24,7 +24,10 @@
   </body>
   <script>
     let audio = new Audio("JingleBearsAudio.wav");
-    const modelViewer = document.getElementById("fallback-modelviewer");
+    const modelViewer = document.querySelector("model-viewer");
+    modelViewer.style.height = "100vh";
+    modelViewer.style.width = "100vw";
+
     modelViewer.addEventListener("load", () => {
       modelViewer.addEventListener("play", () => {
         audio.play();
