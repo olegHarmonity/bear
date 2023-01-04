@@ -23,9 +23,16 @@
     </model-viewer>
   </body>
   <script>
+    let audio = new Audio("JingleBearsAudio.wav");
     const modelViewer = document.getElementById("fallback-modelviewer");
     modelViewer.addEventListener("load", () => {
-      modelViewer.play();
+      modelViewer.addEventListener("play", () => {
+        audio.play();
+      });
+      modelViewer.addEventListener("finished", () => {
+        audio.pause();
+      });
+      modelViewer.play({ repetitions: 1 });
     });
   </script>
 </html>
