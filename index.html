@@ -72,45 +72,50 @@
 
       modelViewer.addEventListener("load", async (e) => {
         let isAR = await browserHasImmersiveArCompatibility();
-        console.log(isAR);
+
         const spinner = document.querySelector(".spinner");
         spinner.classList.add("hidden");
         const btn = document.getElementById("button");
-        if (isAR) {
+        if (os === "ios") {
           btn.style.display = "block";
-          button.addEventListener("click", () => {
+          btn.addEventListener("click", () => {
             modelViewer.activateAR();
-            modelViewer.addEventListener("play", () => {
-              audio.play();
-            });
-            modelViewer.addEventListener("finished", () => {
-              audio.pause();
-              window.location.replace("over.html");
-            });
-
+            modelViewer.play();
             setTimeout(() => {
-              modelViewer.play({ repetitions: 1 });
+              window.location.replace("over.html");
             }, 3000);
-
-            if (os === "ios") {
-              setTimeout(() => {
-                window.location.replace("over.html");
-              }, 3000);
-            }
-
-            // modelViewer.addEventListener("ar-status", (e) => {
-            //   if (e.detail.status === "object-placed") {
-            //     modelViewer.play({ repetitions: 1 });
-
-            //   }
-            // });
           });
         } else {
-          const warn = document.querySelector(".ar-failure");
-          warn.classList.add("visible");
-          setTimeout(() => {
-            window.location.replace("fallback.html");
-          }, 3000);
+          if (isAR) {
+            btn.style.display = "block";
+            btn.addEventListener("click", () => {
+              modelViewer.activateAR();
+              modelViewer.addEventListener("play", () => {
+                audio.play();
+              });
+              modelViewer.addEventListener("finished", () => {
+                audio.pause();
+                window.location.replace("over.html");
+              });
+
+              setTimeout(() => {
+                modelViewer.play({ repetitions: 1 });
+              }, 3000);
+
+              // modelViewer.addEventListener("ar-status", (e) => {
+              //   if (e.detail.status === "object-placed") {
+              //     modelViewer.play({ repetitions: 1 });
+
+              //   }
+              // });
+            });
+          } else {
+            const warn = document.querySelector(".ar-failure");
+            warn.classList.add("visible");
+            setTimeout(() => {
+              window.location.replace("fallback.html");
+            }, 3000);
+          }
         }
 
         // const btn = document.getElementById("button");
