@@ -20,12 +20,16 @@
         <div class="spinner">Loading...</div>
 
         <button id="button">start ar</button>
-        <h4 class="ar-failure">YOUR DEVICE DOESN'T SUPPORT AR. YOU WILL BE REDIRECTED TO 3D MODEL MODE</h4>
+        <div class="ar-failure">
+          <h4>
+            YOUR DEVICE DOESN'T SUPPORT AR. OPEN APPLICATION IN GOOGLE CHROME FOR AR EXPERIENCE OR SEE MODEL IN 3D MODE
+          </h4>
+        </div>
       </div>
 
       <model-viewer
         id="modelViewer"
-        src="./bear_test_05.glb"
+        src="./bear_test_05.glb?sound=./JingleBearsAudio.wav"
         ios-src="./NewProject4.usdz"
         alt="A 3D model of a logo"
         ar
@@ -86,36 +90,35 @@
             }, 3000);
           });
         } else {
-          if (isAR) {
-            btn.style.display = "block";
-            btn.addEventListener("click", () => {
-              modelViewer.activateAR();
-              modelViewer.addEventListener("play", () => {
-                audio.play();
-              });
-              modelViewer.addEventListener("finished", () => {
-                audio.pause();
-                window.location.replace("over.html");
-              });
-
-              setTimeout(() => {
-                modelViewer.play({ repetitions: 1 });
-              }, 3000);
-
-              // modelViewer.addEventListener("ar-status", (e) => {
-              //   if (e.detail.status === "object-placed") {
-              //     modelViewer.play({ repetitions: 1 });
-
-              //   }
-              // });
+          btn.style.display = "block";
+          btn.addEventListener("click", () => {
+            modelViewer.activateAR();
+            modelViewer.addEventListener("play", () => {
+              audio.play();
             });
-          } else {
-            const warn = document.querySelector(".ar-failure");
-            warn.classList.add("visible");
+            modelViewer.addEventListener("finished", () => {
+              audio.pause();
+              window.location.replace("over.html");
+            });
+
             setTimeout(() => {
-              window.location.replace("fallback.html");
+              modelViewer.play({ repetitions: 1 });
             }, 3000);
-          }
+
+            // modelViewer.addEventListener("ar-status", (e) => {
+            //   if (e.detail.status === "object-placed") {
+            //     modelViewer.play({ repetitions: 1 });
+
+            //   }
+            // });
+          });
+          //  else {
+          //   const warn = document.querySelector(".ar-failure");
+          //   warn.classList.add("visible");
+          //   setTimeout(() => {
+          //     window.location.replace("fallback.html");
+          //   }, 3000);
+          // }
         }
 
         // const btn = document.getElementById("button");
