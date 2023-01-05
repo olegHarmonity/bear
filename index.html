@@ -90,28 +90,33 @@
             }, 3000);
           });
         } else {
-          btn.style.display = "block";
-          btn.addEventListener("click", () => {
+          if (isAR) {
+            btn.style.display = "block";
+            btn.addEventListener("click", () => {
+              modelViewer.activateAR();
+              modelViewer.addEventListener("play", () => {
+                audio.play();
+              });
+              modelViewer.addEventListener("finished", () => {
+                audio.pause();
+                window.location.replace("over.html");
+              });
+
+              setTimeout(() => {
+                modelViewer.play({ repetitions: 1 });
+              }, 3000);
+
+              // modelViewer.addEventListener("ar-status", (e) => {
+              //   if (e.detail.status === "object-placed") {
+              //     modelViewer.play({ repetitions: 1 });
+
+              //   }
+              // });
+            });
+          } else {
             modelViewer.activateAR();
-            modelViewer.addEventListener("play", () => {
-              audio.play();
-            });
-            modelViewer.addEventListener("finished", () => {
-              audio.pause();
-              window.location.replace("over.html");
-            });
+          }
 
-            setTimeout(() => {
-              modelViewer.play({ repetitions: 1 });
-            }, 3000);
-
-            // modelViewer.addEventListener("ar-status", (e) => {
-            //   if (e.detail.status === "object-placed") {
-            //     modelViewer.play({ repetitions: 1 });
-
-            //   }
-            // });
-          });
           //  else {
           //   const warn = document.querySelector(".ar-failure");
           //   warn.classList.add("visible");
