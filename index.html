@@ -83,6 +83,7 @@
         const spinner = document.querySelector(".spinner");
         spinner.classList.add("hidden");
         const btn = document.getElementById("button");
+        const annotation = document.querySelector(".annotation");
         if (os === "ios") {
           btn.style.display = "block";
           btn.addEventListener("click", () => {
@@ -102,11 +103,12 @@
               });
               modelViewer.addEventListener("finished", () => {
                 audio.pause();
-                window.location.replace("over.html");
+                annotation.style.visibility = "visible";
+                //window.location.replace("over.html");
               });
 
               setTimeout(() => {
-                // modelViewer.play({ repetitions: 1 });
+                modelViewer.play({ repetitions: 1 });
               }, 3000);
 
               // modelViewer.addEventListener("ar-status", (e) => {
