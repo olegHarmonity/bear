@@ -20,14 +20,13 @@
       shadow-intensity="1"
       src="./bear_test_05.glb"
       alt="An animate 3D model of a robot"
-    ></model-viewer>
+    >
+      <div class="annotation">This annotation is fixed in screen-space</div>
+    </model-viewer>
     <script type="module">
       const modelViewer = document.querySelector("#change-speed-demo");
 
-      modelViewer.addEventListener("load", () => {
-        modelViewer.activateAR();
-        modelViewer.play({ repetitions: 1 });
-      });
+      modelViewer.addEventListener("load", () => {});
 
       // const play = () => {
       //   modelViewer.addEventListener("model-visibility", () => {

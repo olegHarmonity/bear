@@ -242,8 +242,8 @@ h1 a {
   }
 }
 
-#annotation {
-  background-color: #dddddd;
+.annotation {
+  background-color: #888888;
   position: absolute;
   transform: translate(10px, 10px);
   border-radius: 10px;
