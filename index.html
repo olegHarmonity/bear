@@ -33,16 +33,16 @@
         ios-src="./NewProject4.usdz"
         alt="A 3D model of a logo"
         ar
-        touch-action="none"
-        disable-tap
+        shadow-intensity="0"
         ar-modes="webxr scene-viewer  quick-look"
         auto-rotate
         camera-controls
-        animation-name="Dance"
+        camera-orbit="0m 30deg -0.1m"
       >
       </model-viewer>
     </div>
   </body>
+  <script src="./script.js"></script>
   <script>
     function displayLoadingBar() {
       const loadingbar = document.querySelector(".loadingbar").classList.add("start");
@@ -75,6 +75,7 @@
       let audio = new Audio("JingleBearsAudio.wav");
 
       modelViewer.addEventListener("load", async (e) => {
+        console.log(modelViewer.hasBakedShadow());
         let isAR = await browserHasImmersiveArCompatibility();
 
         const spinner = document.querySelector(".spinner");
@@ -103,7 +104,7 @@
               });
 
               setTimeout(() => {
-                modelViewer.play({ repetitions: 1 });
+                // modelViewer.play({ repetitions: 1 });
               }, 3000);
 
               // modelViewer.addEventListener("ar-status", (e) => {
