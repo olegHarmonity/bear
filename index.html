@@ -40,11 +40,10 @@
         camera-orbit="0m 1m -0.1m"
         field-of-view="100deg"
       >
-        <div class="annotation">This annotation is fixed in screen-space</div>
       </model-viewer>
     </div>
   </body>
-  <script src="./script.js"></script>
+
   <script>
     function displayLoadingBar() {
       const loadingbar = document.querySelector(".loadingbar").classList.add("start");
@@ -77,13 +76,12 @@
       let audio = new Audio("JingleBearsAudio.wav");
 
       modelViewer.addEventListener("load", async (e) => {
-        console.log(modelViewer.hasBakedShadow());
         let isAR = await browserHasImmersiveArCompatibility();
 
         const spinner = document.querySelector(".spinner");
         spinner.classList.add("hidden");
         const btn = document.getElementById("button");
-        const annotation = document.querySelector(".annotation");
+
         if (os === "ios") {
           btn.style.display = "block";
           btn.addEventListener("click", () => {
@@ -103,8 +101,8 @@
               });
               modelViewer.addEventListener("finished", () => {
                 audio.pause();
-                annotation.style.visibility = "visible";
-                //window.location.replace("over.html");
+
+                window.location.replace("over.html");
               });
 
               setTimeout(() => {
